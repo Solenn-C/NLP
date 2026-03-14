@@ -16,7 +16,7 @@ traitement_prénom.py : Nettoie les données brutes, calcule les "skeletons" pho
 pays_corriger.py : Unifie et traduit les origines (ex: "Arabic" -> "Arabie") et nettoie les métadonnées inutiles.
 
 ## 3. Enrichissement et Fusion
-mise_en_forme_json.py : Ajoute les étiquettes de type (ex: "type": "prenom") pour structurer le JSON final.
+mise_en_format_json.py : Ajoute les étiquettes de type (ex: "type": "prenom") pour structurer le JSON final.
 
 fusion_BDD_rang.py : Fusionne la base des prénoms avec les statistiques de rang mondial (incidence et fréquence).
 
