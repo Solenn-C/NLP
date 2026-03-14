@@ -1,0 +1,20 @@
+# --- Web Scraping & Automation ---
+playwright
+beautifulsoup4
+requests
+
+# --- API & Backend ---
+fastapi
+uvicorn
+
+# --- Data Science & Traitement ---
+pandas
+scikit-learn
+rapidfuzz
+plotly
+
+# --- Interface Utilisateur ---
+streamlit
+
+# --- Utilitaires ---
+tqdm
