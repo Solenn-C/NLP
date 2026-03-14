@@ -17,8 +17,8 @@ def fusionner_bases():
         print(f"Erreur lors du chargement : {e}")
         return
 
-    # 2. Indexation du fichier de RANG (Optimisation)
-    # On normalise les clés (minuscules et sans espaces) pour assurer le lien
+    # 2. Indexation du fichier de RANG
+    # On normalise les clés (minuscules et sans espaces)
     rang_index = {
         str(item.get('prenom')).strip().lower(): item 
         for item in data_rang 
