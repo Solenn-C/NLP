@@ -26,7 +26,6 @@ def fusion_enrichissement_bdd():
         return
 
     # 1. On indexe le FICHIER DE RANG (clé normalisée)
-    # On crée un dictionnaire : {'MARTINEZ': {'rang': 1, ...}, 'SMITH': {...}}
     index_rang = {}
     for entry in data_rang:
         nom_mondial = entry.get('nom_famille', "")
@@ -52,7 +51,6 @@ def fusion_enrichissement_bdd():
             count_matched += 1
         
         # 3. Ajout des variables de rang sans modifier le reste
-        # On utilise .get(..., "N/A") pour remplir si absent
         nouvelle_entree["rang_mondial"] = info_rang.get("rang", "N/A")
         nouvelle_entree["incidence_mondiale"] = info_rang.get("nombre_personnes", "N/A")
         nouvelle_entree["frequence_mondiale"] = info_rang.get("frequence", "N/A")
