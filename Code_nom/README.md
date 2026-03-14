@@ -1,35 +1,32 @@
-Pipeline de Constitution de Base de Données (Noms)
+# Pipeline de Traitement : Noms de Famille
 
-🚀 Ordre d'exécution des scripts
-Pour reconstruire la base de données complète, veuillez suivre l'ordre suivant :
+## 🚀 Ordre d'exécution des scripts
 
-1. Collecte des données (Scraping)
-scrapping_prenoms.py : Récupère la base source des prénoms (noms, genres, origines) sur Behind the Name.
+### 1. Collecte et Structuration Initiale
 
-scrap_rang_mondial.py : Extrait le classement mondial simplifié des prénoms sur Forebears.
+* **`scrap_rang_mondial_nom.py`** : Récupère le classement mondial (Forebears).
+* **`main_names.py`** : Premier regroupement des noms par origine sémantique.
+* **`refine_clusters.py`** : Affine les groupes en fusionnant les variantes (ex: "diminutif de").
 
-frequence_origine.py : Script asynchrone (Turbo) pour récupérer les fréquences détaillées par pays pour chaque prénom.
+### 2. Enrichissement Géographique (Pays)
 
-2. Traitement et Normalisation
-traitement_prénom.py : Nettoie les données brutes, calcule les "skeletons" phonétiques et identifie les variantes textuelles (Fuzzy Matching). Calcule également les scores de précision (F1-Score).
+* **`recup_pays.py`** : Extrait automatiquement les pays depuis les descriptions.
+* **`recup_with_ollama.py`** : Utilise l'IA locale (TinyLlama) pour deviner les pays restants.
+* **`verif_inconnu_fichier_final.py`** : Contrôle qualité pour lister les données encore inconnues.
 
-pays_corriger.py : Unifie et traduit les origines (ex: "Arabic" -> "Arabie") et nettoie les métadonnées inutiles.
+### 3. Finalisation des Données
 
-3. Enrichissement et Fusion
-colonne_json.py : Ajoute les étiquettes de type (ex: "type": "prenom") pour structurer le JSON final.
+* **`fusion_BDD_rang_nom.py`** : Fusionne les groupes avec les statistiques mondiales.
+* **`mise_en_forme_json_final.py`** : Conversion finale au format standard pour l'export.
 
-fusion_BDD_rang.py : Fusionne la base des prénoms avec les statistiques de rang mondial (incidence et fréquence).
+---
 
-fusion_BDD_rang_nom.py : Fusionne la base des noms de famille avec les statistiques de rang mondial en utilisant une normalisation stricte pour les jointures.
+## Outils de Tests & Annexes
 
-📊 Structure des données finales
-Le fichier de sortie final regroupe les informations suivantes par entrée :
+* **`test_recherche_noms.py`** : Pour vérifier manuellement un nom dans les clusters.
+* **`traitement_nom_famille.py`** : Module de nettoyage et regroupement par ID d'origine.
+* **`projet.py`** : Script d'intégration globale et export Excel.
 
-Identification : Nom, genre, type.
+---
 
-Expertise : Origines nettoyées et variantes identifiées.
-
-Statistiques : Rang mondial, incidence (nombre de personnes) et fréquence.
-
-⚖️ Évaluation
-Le script traitement_prénom.py inclut un module d'évaluation qui compare les variantes trouvées à une "Vérité Terrain" pour calculer la Précision et le Rappel.
+Est-ce que ce format plus court est plus simple à copier pour toi ?es trouvées à une "Vérité Terrain" pour c
